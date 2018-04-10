@@ -59,10 +59,7 @@ namespace RizoChange2
                         case "/reload":
                         case "-reload":
                         case "--reload":
-                            string tempFlag = args[++i];
-                            this.DisplayReload = 
-                                new string[5] { "true", "1", "on", "有効", "yes" }.
-                                Any(x => x.Equals(tempFlag, StringComparison.OrdinalIgnoreCase));
+                            this.DisplayReload = true;
                             break;
                         case "/l":
                         case "-l":

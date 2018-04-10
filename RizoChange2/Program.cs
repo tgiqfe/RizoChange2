@@ -33,33 +33,34 @@ namespace RizoChange2
                 //  ログ準備
                 lg = new LogWrite(ap.LogFile);
                 lg.WriteLine("開始");
-
+                
                 //  ヘルプ表示
                 if (ap.ViewHelp || !ap.Runnable)
                 {
                     Help.View();
-                    //return;
+                    return;
+                }
+                
+                //  レジストリのモニタ情報を確認
+                MonitorRegistry mr = new MonitorRegistry();
+                mr.CheckRegMonitor();
+
+                //  解像度変更
+                lg.WriteLine("ディスプレイ番号：" + string.Join(", ", ap.TargetDisplays));
+                lg.WriteLine("横幅 (X)：" + ap.ResolutionX.ToString());
+                lg.WriteLine("高さ (Y)：" + ap.ResolutionY.ToString());
+                mr.ChangeRegResolution(ap.TargetDisplays, ap.ResolutionX, ap.ResolutionY);
+
+                //  ディスプレイ再起動
+                if (mr.IsChanged && ap.DisplayReload)
+                {
+                    lg.WriteLine("ディスプレイ再起動");
+                    new ChangeStatePNPDevice("Display").Reload();
                 }
 
-                //  モニタ情報情報を取得
-                MonitorRegistry mr = new MonitorRegistry();
-                mr.GetConnectedMonitor();
-                mr.CheckRegistryKey();
-                mr.LatestRegistryKey();
-
-                Console.WriteLine(mr.LatestMonitor.DeviceID);
-
-
-
-
+                //  終了
                 lg.WriteLine("終了");
             }
-            Console.ReadLine();
         }
-
-        
-
-
-
     }
 }
