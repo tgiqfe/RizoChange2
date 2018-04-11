@@ -17,7 +17,7 @@ namespace RizoChange2
         {
             string appName = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
             Console.WriteLine($@"
-使用法 {appName} / X <横幅> /Y <高さ> [/N <ディスプレイ番号>]
+使用法 {appName} /X <横幅> /Y <高さ> [/N <ディスプレイ番号>]
               [/R] [/L <ログファイル>] [/?]
 
 オプション：
@@ -31,12 +31,12 @@ namespace RizoChange2
 
 例：
   {appName} /X 1600 /Y 900
-  - 接続している全ディスプレイの解像度を1600×900に設定。
+  - プライマリディスプレイの解像度を1600×900に設定。
     次回再起動or再度ログオン後に反映。
 
-  {appName} /X 1920 /Y 1080 /N 00 /R
-  - プライマリディスプレイのみ、1920×1080に設定。
-    ディスプレイデバイスを再起動する為、一瞬の暗転後に反映
+  {appName} /X 1920 /Y 1080 /N 00,01 /R
+  - プライマリとセカンダリディスプレイを、1920×1080に設定。
+    ディスプレイデバイスを再起動して、一瞬の暗転後に反映
 ");
         }
     }
