@@ -1,6 +1,10 @@
 # RizoChange2
 ディスプレイの解像度変更用ツール<br>
 
+### Download
+https://github.com/tgiqfe/RizoChange2/releases<br>
+<br>
+### Usage
 ```
 使用法 RizoChange.exe / X <横幅> /Y <高さ> [/N <ディスプレイ番号>]
               [/R] [/L <ログファイル>] [/?]
